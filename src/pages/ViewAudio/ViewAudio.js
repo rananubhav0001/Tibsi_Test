@@ -22,7 +22,7 @@ const data = [
 
 const ViewAudio = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [chartOptions, setChartOptions] = useState({
+  const [chartOptions] = useState({
     options: {
       chart: {
         id: "basic-line",
@@ -68,7 +68,7 @@ const ViewAudio = () => {
       title: "Audio File Category",
       dataIndex: "name",
       key: "name",
-      render: (text) => <a>{text}</a>,
+      render: (text) => <div>{text}</div>,
     },
     {
       title: "Upload Date",

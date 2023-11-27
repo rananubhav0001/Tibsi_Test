@@ -1,81 +1,5 @@
-// import React from "react";
-// import { Button, Space, Table, Tag } from "antd";
-// import { CloseOutlined, EyeOutlined } from "@ant-design/icons";
-// const columns = [
-//   {
-//     title: "Spatial Term",
-//     dataIndex: "name",
-//     key: "name",
-//     render: (text) => <a>{text}</a>,
-//   },
-//   {
-//     title: "Frequency",
-//     dataIndex: "age",
-//     key: "age",
-//   },
-//   {
-//     title: "Importance",
-//     dataIndex: "address",
-//     key: "address",
-//   },
-//   {
-//     title: "Status",
-//     key: "tags",
-//     dataIndex: "tags",
-//   },
-//   {
-//     title: "Actions",
-//     key: "action",
-//     render: (_, record) => (
-//       <Space size="middle">
-//         <Button style={{ background: "green", color: "white" }}>
-//           Start Analysing
-//         </Button>
-//         <Button>
-//           <EyeOutlined />
-//         </Button>
-//         <Button>
-//           <CloseOutlined />
-//         </Button>
-//       </Space>
-//     ),
-//   },
-// ];
-// const data = [
-//     {
-//         key: "1",
-//         name: "Proximity",
-//         age: "5",
-//         address: "High",
-//         tags: "Success",
-//       },
-//       {
-//         key: "2",
-//         name: "Boundary",
-//         age: "10",
-//         address: "Low",
-//         tags: "Not Success",
-//       },
-// ];
-// const ViewParameter = () => <Table columns={columns} dataSource={data} />;
-// export default ViewParameter;
-
-
-
-
-
-
-
-
-
-// .................................................
-
-
-
-
-
 import React, { useState } from 'react';
-import { Form, Input, Row, Col, Table, InputNumber } from 'antd';
+import {  Row, Col, Table, InputNumber } from 'antd';
 import ReactApexChart from 'react-apexcharts';
 
 const Test = () => {
@@ -126,18 +50,6 @@ const Test = () => {
     if (value > 0 && !chartCategories.includes(word)) {
       setChartCategories((prevCategories) => [...prevCategories, word]);
     }
-  };
-
-  const handleTextChange = (e) => {
-    const text = e.target.value;
-    const helloCount = (text.match(/\bhello\b/g) || []).length;
-    const hiCount = (text.match(/\bhi\b/g) || []).length;
-
-    setWordCounts((prevCounts) => ({
-      ...prevCounts,
-      hello: helloCount,
-      hi: hiCount,
-    }));
   };
 
   const options = {

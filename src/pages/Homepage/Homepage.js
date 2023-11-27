@@ -1,4 +1,4 @@
-import { Card, Statistic, Avatar, theme } from "antd";
+import { Card, Statistic, Avatar } from "antd";
 import {
   DollarCircleOutlined,
   SubnodeOutlined,
@@ -90,9 +90,10 @@ const HomePage = () => {
     },
   ];
 
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  // const {
+  //   // token: { colorBgContainer },
+  // } = theme.useToken();
+
   return (
     <div style={{ height: "100%", overflowY: "auto", padding: "1rem" }}>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 ">

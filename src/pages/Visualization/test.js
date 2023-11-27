@@ -8,7 +8,7 @@ const Test = () => {
   const [originalData, setOriginalData] = useState({});
   const [tableData, setTableData] = useState([]);
   const [chartCategories, setChartCategories] = useState([]);
-  const [pieChartData, setPieChartData] = useState([]);
+  // const [ setPieChartData] = useState([]);
   const [isBarChartVisible, setIsBarChartVisible] = useState(true);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Test = () => {
       y: count,
     }));
 
-    setPieChartData(pieChartData);
+    // setPieChartData(pieChartData);
   }, []);
 
   const columns = [
