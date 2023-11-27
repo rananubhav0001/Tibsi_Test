@@ -28,10 +28,10 @@ const Test = () => {
       Object.keys(jsonData).filter((word) => jsonData[word] > 0)
     );
 
-    const pieChartData = transformedData.map(({ word, count }) => ({
-      x: word,
-      y: count,
-    }));
+    // const pieChartData = transformedData.map(({ word, count }) => ({
+    //   x: word,
+    //   y: count,
+    // }));
 
     // setPieChartData(pieChartData);
   }, []);
