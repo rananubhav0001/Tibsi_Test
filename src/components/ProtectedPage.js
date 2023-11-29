@@ -151,11 +151,11 @@ import {
   AuditOutlined,
   // DashboardOutlined,
   // FileOutlined,
-  FolderViewOutlined,
+  // FolderViewOutlined,
   HighlightOutlined,
   // NotificationOutlined,
   // UploadOutlined,
-  UserOutlined,
+  // UserOutlined,
   // UserAddOutlined,
   // UserOutlined,
 } from "@ant-design/icons";
@@ -188,9 +188,9 @@ const items = [
   //   getItem("View Audio ", "viewAudioList", <AudioOutlined />),
   //   getItem("Upload Audio ", "uploadNewAudio", <UploadOutlined />),
   // ]),
-  getItem("View Parameters", "viewParameters", <FolderViewOutlined />),
+  // getItem("View Parameters", "viewParameters", <FolderViewOutlined />),
   getItem("Manage Visualisation", "manageVisualisation", <HighlightOutlined />),
-  getItem("Manage Audio-1", "manageUsers", <UserOutlined />),
+  // getItem("Manage Audio-1", "manageUsers", <UserOutlined />),
  
 ];
 
