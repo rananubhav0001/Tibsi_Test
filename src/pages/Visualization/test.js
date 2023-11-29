@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Table, InputNumber, Row, Col, Button, Switch } from "antd";
+import { Table, InputNumber, Row, Col } from "antd";
 import ReactApexChart from "react-apexcharts";
 import jsonData from "./test.json";
 import "./test.css";
+import { BarChartOutlined, PieChartOutlined, UndoOutlined } from "@ant-design/icons";
 
 const Test = () => {
   const [originalData, setOriginalData] = useState({});
   const [tableData, setTableData] = useState([]);
   const [chartCategories, setChartCategories] = useState([]);
-  // const [ setPieChartData] = useState([]);
-  const [isBarChartVisible, setIsBarChartVisible] = useState(true);
+  // const [isBarChartVisible, setIsBarChartVisible] = useState(true);
+  const [selectedChartType, setSelectedChartType] = useState("bar");
 
   useEffect(() => {
     const transformedData = Object.entries(jsonData)
@@ -27,13 +28,6 @@ const Test = () => {
     setChartCategories(
       Object.keys(jsonData).filter((word) => jsonData[word] > 0)
     );
-
-    // const pieChartData = transformedData.map(({ word, count }) => ({
-    //   x: word,
-    //   y: count,
-    // }));
-
-    // setPieChartData(pieChartData);
   }, []);
 
   const columns = [
@@ -50,13 +44,12 @@ const Test = () => {
             value={text}
             onChange={(value) => handleCountChange(record.word, value)}
           />
-          <Button
-            type="primary"
+          
+          <UndoOutlined
             className="ml-5"
             onClick={() => handleReset(record.word)}
-          >
-            Reset
-          </Button>
+            title="Reset"
+          />
         </div>
       ),
     },
@@ -88,7 +81,7 @@ const Test = () => {
 
   const options = {
     chart: {
-      type: "bar",
+      type: selectedChartType,
     },
     plotOptions: {
       bar: {
@@ -122,7 +115,7 @@ const Test = () => {
   return (
     <div>
       <Row>
-        <Col span={12}>
+        <Col span={8}>
           <Table
             columns={columns}
             dataSource={tableData}
@@ -131,25 +124,35 @@ const Test = () => {
             className="custom-table"
           />
         </Col>
-        <Col span={12}>
-        <div>
-        <Switch
-            type="primary"
-            onClick={() => setIsBarChartVisible((prev) => !prev)}
-            style={{ marginTop: 10 }}
-          >
-            Toggle Chart
-          </Switch>
-        </div>
-          <div >
-            {isBarChartVisible ? (
+        <Col span={16}>
+          <div className="m-5">
+            <BarChartOutlined
+              className={
+                selectedChartType === "bar" ? "icon-selected" : "icon-default"
+              }
+              onClick={() => setSelectedChartType("bar")}
+              title="Bar Chart"
+            />
+
+            <PieChartOutlined
+              style={{ marginLeft: "5px" }}
+              className={
+                selectedChartType === "donut" ? "icon-selected" : "icon-default"
+              }
+              onClick={() => setSelectedChartType("donut")}
+              title="Pie Chart"
+            />
+          </div>
+          <div>
+            {selectedChartType === "bar" && (
               <ReactApexChart
                 options={options}
                 series={series}
                 type="bar"
                 height={350}
               />
-            ) : (
+            )}
+            {selectedChartType === "donut" && (
               <ReactApexChart
                 options={pieChartOptions}
                 series={pieChartSeries}
@@ -158,7 +161,6 @@ const Test = () => {
               />
             )}
           </div>
-          
         </Col>
       </Row>
     </div>

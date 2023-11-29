@@ -1,35 +1,28 @@
+
 import React, { useState } from "react";
-import {
-  Button,
-  Space,
-  Table,
-  Modal,
-  Upload,
-  Form,
-  Select,
-  Input,
-} from "antd";
-import { CloseOutlined, EyeOutlined, UploadOutlined } from "@ant-design/icons";
+import { Button, Space, Modal, Dropdown, Menu, Upload, Form, Input, Select } from "antd";
+import {  DownOutlined, UploadOutlined } from "@ant-design/icons";
+// import Chart from "react-apexcharts";
 import { Option } from "antd/es/mentions";
 
-const data = [
-  {
-    key: "1",
-    name: "Ecology",
-    age: "12/12/2023",
-    address: "90 Kb",
-    tags: "Uploaded Successfully",
-  },
-  {
-    key: "2",
-    name: "Neuroscience",
-    age: "08/12/2023",
-    address: "30 Kb",
-    tags: "Uploaded Successfully",
-  },
-];
+// const data = [
+//   {
+//     key: "1",
+//     name: "Ecology",
+//     age: "12/12/2023",
+//     address: "90 Kb",
+//     tags: "Uploaded Successfully",
+//   },
+//   {
+//     key: "2",
+//     name: "Neuroscience",
+//     age: "08/12/2023",
+//     address: "30 Kb",
+//     tags: "Uploaded Successfully",
+//   },
+// ];
 
-const ViewAudio = () => {
+const ViewTest = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   // const [chartOptions] = useState({
   //   options: {
@@ -72,58 +65,170 @@ const ViewAudio = () => {
   };
 
   //column
-  const columns = [
-    {
-      title: "Audio File Category",
-      dataIndex: "name",
-      key: "name",
-      render: (text) => <div>{text}</div>,
-    },
-    {
-      title: "Upload Date",
-      dataIndex: "age",
-      key: "age",
-    },
-    {
-      title: "Size",
-      dataIndex: "address",
-      key: "address",
-    },
-    {
-      title: "Status",
-      key: "tags",
-      dataIndex: "tags",
-    },
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-          <Button
-            style={{ background: "green", color: "white" }}
-            // onClick={() => handleStartAnalysis(record)}
-          >
-            Start Analysing
-          </Button>
-          <Button>
-            <EyeOutlined />
-          </Button>
-          <Button>
-            <CloseOutlined />
-          </Button>
-        </Space>
-      ),
-    },
-  ];
+  // const columns = [
+  //   {
+  //     title: "Audio File Category",
+  //     dataIndex: "name",
+  //     key: "name",
+  //     render: (text) => <div>{text}</div>,
+  //   },
+  //   {
+  //     title: "Upload Date",
+  //     dataIndex: "age",
+  //     key: "age",
+  //   },
+  //   {
+  //     title: "Size",
+  //     dataIndex: "address",
+  //     key: "address",
+  //   },
+  //   {
+  //     title: "Status",
+  //     key: "tags",
+  //     dataIndex: "tags",
+  //   },
+  //   {
+  //     title: "Action",
+  //     key: "action",
+  //     render: (_, record) => (
+  //       <Space size="middle">
+  //         <Button
+  //           style={{ background: "green", color: "white" }}
+  //           onClick={() => handleStartAnalysis(record)}
+  //         >
+  //           Start Analysing
+  //         </Button>
+  //         {/* <Button>
+  //           <EyeOutlined />
+  //         </Button> */}
+
+  //         <Button>
+  //           <CloseOutlined />
+  //         </Button>
+  //       </Space>
+  //     ),
+  //   },
+  // ];
+
+
+
+  const options1 =[
+      {
+        label: "Environment",
+        key: "0",
+      },
+      {
+        label: "Water scarcity",
+        key: "1",
+      },
+  
+      {
+        label: "Biodiversity",
+        key: "3",
+      },
+      {
+        label: "Ecosystem dynamics",
+        key: "4",
+      },
+      {
+        label: "Rainwater Harvesting",
+        key: "5",
+      },
+      {
+        label: "Psychological well-being",
+        key: "6",
+      },
+    ];
+
+  // Dropdown options for the second dropdown
+  const options2 = [
+      {
+        label: "Professor of energy transformation",
+        key: "0",
+      },
+      {
+        label: "Professor of digital technology",
+        key: "1",
+      },
+  
+      {
+        label: "Professor of ecology",
+        key: "3",
+      },
+      {
+        label: "Professor of urbanism",
+        key: "4",
+      },
+      {
+        label: "Professor of neuroscience",
+        key: "5",
+      },
+      {
+        label: "Professor of Economics",
+        key: "6",
+      },
+      {
+        label: "Professor of human geography",
+        key: "7",
+      },
+    ];
 
   return (
     <>
-      <div className="flex justify-end">
-        <Button onClick={(record) => handleStartAnalysis(record)}>
+      {/* <Table columns={columns} dataSource={data} /> */}
+      
+      
+      <div className="flex ">
+
+      <div>
+      {/* First Dropdown */}
+      <Dropdown
+      
+      className="mr-10"
+        overlay={
+          <Menu>
+            {options1.map((option) => (
+              <Menu.Item key={option.key}>{option.label}</Menu.Item>
+            ))}
+          </Menu>
+        }
+        trigger={["click"]}
+      >
+        <span style={{color:"blue"}} className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
+          <Space>
+             TOPICS <DownOutlined />
+          </Space>
+        </span>
+      </Dropdown>
+
+      {/* Second Dropdown */}
+      <Dropdown
+      className="mr-10"
+        overlay={
+          <Menu>
+            {options2.map((option) => (
+              <Menu.Item key={option.key}>{option.label}</Menu.Item>
+            ))}
+          </Menu>
+        }
+        trigger={["click"]}
+      >
+        <span  className="ant-dropdown-link" style={{color:"blue"}} onClick={(e) => e.preventDefault()}>
+          <Space>
+            PARTICIPANTS <DownOutlined />
+          </Space>
+        </span>
+      </Dropdown>
+      <Button onClick={(record) => handleStartAnalysis(record)} >
           <UploadOutlined /> Upload Audio
         </Button>
+
+        <Button type="primary" style={{marginLeft:"42rem"}}>
+          Live
+        </Button>
+      
+    </div>
       </div>
-      <Table columns={columns} dataSource={data} />
       <Modal
         width={600}
         title="Upload Audio"
@@ -238,4 +343,4 @@ const ViewAudio = () => {
   );
 };
 
-export default ViewAudio;
+export default ViewTest;
